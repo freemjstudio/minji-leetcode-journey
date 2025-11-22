@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/jump-game/
 
-# First Trial
+# First Trial : O(2^n)
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         answer = False 
