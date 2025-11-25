@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/jump-game/
 
 # First Trial : O(2^n)
-class Solution:
+class Solution1:
     def canJump(self, nums: List[int]) -> bool:
         answer = False 
 
@@ -19,7 +19,7 @@ class Solution:
         return answer
  
  # Second Trial : O(N)
- class Solution:
+class Solution2:
     def canJump(self, nums: List[int]) -> bool: 
         max_index = 0
         
