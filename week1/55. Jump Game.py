@@ -1,3 +1,5 @@
+from types import List 
+
 # https://leetcode.com/problems/jump-game/
 
 # First Trial : O(2^n)

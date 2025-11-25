@@ -16,11 +16,11 @@ class Solution:
 # edge case : 
 # [4,10,4,3,8,9]
 
+# O(N²)
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         n = len(nums)
         dp = [1] * n
-        dp[0] = 1
 
         for i in range(1, n):
             for j in range(i): # count if the number is smaller than current number (nums[i])
@@ -29,4 +29,4 @@ class Solution:
                 
         return max(dp) 
 
-# https://www.geeksforgeeks.org/dsa/longest-increasing-subsequence-dp-3/
+# it has binary search solution ! 
