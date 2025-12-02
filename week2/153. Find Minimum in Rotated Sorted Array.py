@@ -21,3 +21,24 @@ class Solution:
                 break 
 
         return answer
+    
+
+    class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        
+        left, right = 0, n-1
+        answer = min(nums[left], nums[right])
+        
+        while left < right: 
+            mid = (left+right)//2
+            
+            if nums[mid] > nums[right]: 
+                answer = min(answer, nums[mid])
+                left = mid + 1
+            else :
+                answer = min(answer, nums[mid])
+                right = mid
+
+
+        return answer
