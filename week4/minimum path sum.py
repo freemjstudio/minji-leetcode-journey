@@ -1,4 +1,4 @@
-from collections import queue 
+from collections import deque 
 
 # top left : (0,0) 
 # bottom right : (n-1, m-1)
@@ -7,30 +7,32 @@ class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         m = len(grid)
         n = len(grid[0])
-        visited = [[False] * n for _ in range(m)]
+        min_path_sum = int(1e9)
 
-        for i in range(m):
-            for j in range(n):
-                if visited[i][j] == -1:
-                    new_path_sum = dfs(i, j) # check the route 
         dx = [0, 1] # You can only move either down or right 
         dy = [1, 0]
+
         def bfs(x, y):
-            queue = queue([])
-            queue.append((x, y))
-            visited[x][y] = True 
+            nonlocal min_path_sum
+            visited = [[False] * n for _ in range(m)]
+            queue = deque([])
+            queue.append((x, y, grid[x][y]))
+          
             while queue: 
-                x, y = queue.popleft()
-                if x == n-1 and y == m-1:
-                    return path_sum
+                x, y, path_sum = queue.popleft()
+                visited[x][y] = True 
+
+                if x == m-1 and y == n-1:
+                    min_path_sum = min(min_path_sum, path_sum)
 
                 for k in range(2):
                     nx, ny = x + dx[k], y + dy[k] # update the positions
-                    if 0 <= nx < n and 0 <= ny < m and not visited[nx][ny]:
-                        visited[nx][ny] += 1
-                        queue.append((nx, ny))
+                    if 0 <= nx < m and 0 <= ny < n:
+                        if not visited[nx][ny]:
+                            queue.append((nx, ny, path_sum + grid[nx][ny]))
 
+        
+        bfs(0, 0) 
 
+        return min_path_sum 
 
-
-        return answer 
